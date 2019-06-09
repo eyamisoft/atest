@@ -4,7 +4,7 @@ public class CheckExp {
 
     @Test
     public void inspect() throws InterruptedException {
-
+    //testing
         System.setProperty("webdriver.chrome.driver","C:\\Users\\Proxes\\Downloads\\JAVABuildTools\\chromedriver_win32\\chromedriver.exe");
         demo = new ChromeDriver();
         demo.manage().window().maximize();
