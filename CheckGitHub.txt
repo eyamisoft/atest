@@ -1,0 +1,34 @@
+public class CheckExp {
+
+    WebDriver demo;
+
+    @Test
+    public void inspect() throws InterruptedException {
+
+        System.setProperty("webdriver.chrome.driver","C:\\Users\\Proxes\\Downloads\\JAVABuildTools\\chromedriver_win32\\chromedriver.exe");
+        demo = new ChromeDriver();
+        demo.manage().window().maximize();
+        demo.get("https://www.expedia.com/");
+        demo.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
+
+        demo.findElement(By.id("package-origin-hp-package")).click();
+        Thread.sleep(3000);
+        demo.findElement(By.id("package-origin-hp-package")).sendKeys("Lan");
+        Thread.sleep(2000);
+        Actions n = new Actions(demo);
+        n.moveToElement(demo.findElement(By.xpath("//*[@id=\"aria-option-1\"]/span[2]"))).click().build().perform();
+        Thread.sleep(1500);
+        demo.findElement(By.xpath("//*[@id=\"traveler-selector-hp-package\"]/div/ul/li/button")).click();
+        Thread.sleep(2000);
+        demo.findElement(By.xpath("//div[@class='traveler-selector-room-data target-clone-field']//div[@class='children-wrapper']//button[@class='uitk-step-input-button uitk-step-input-plus']//*[@class='uitk-icon-svg uitk-step-input-icon']")).click();
+        Thread.sleep(1000);
+
+        Select child = new Select(demo.findElement(By.xpath("//select[@class='gcw-storeable gcw-toggles-field-by-value gcw-child-age-select gcw-child-age-1-1-hc']")));
+        for (int i=0;i<17;i++){
+            child.selectByIndex(i);
+            demo.findElement(By.xpath("//select[@class='gcw-storeable gcw-toggles-field-by-value gcw-child-age-select gcw-child-age-1-1-hc']")).click();
+        }
+
+
+    }
+}
